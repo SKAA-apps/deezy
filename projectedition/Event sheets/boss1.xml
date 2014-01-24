@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>boss1</name>
+    <events>
+        <variable constant="0" name="bossTime" sid="1729063706991635" static="0" type="number">0</variable>
+        <include>level 1-1 sheet</include>
+        <event-block sid="1461673831373775">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="1977251718478218" type="System" />
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="8238230039909774" type="bossEnemy">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>After player collides with this, start boss AI</comment>
+        <event-block sid="5353189014801911">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="8721839776714138" type="xeon">
+                    <param id="0" name="Object">startBoss</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="7975197615826133">
+                    <conditions>
+                        <condition id="-14" name="Pick by unique ID" sid="9478927381314018" type="platform1">
+                            <param id="0" name="Unique ID">61</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-6" name="Set height" sid="1470494083216344" type="platform1">
+                            <param id="0" name="Height">448</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="9630314463752915" type="bossEnemy">
+                            <param id="0" name="Instance variable">startAI</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="5214828788532593">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="5416804380417936" type="bossEnemy">
+                    <param id="0" name="Instance variable">startAI</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="5882494591889904">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="4395498839381316" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="3574188946602336" type="System">
+                            <param id="0" name="Variable">bossTime</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6284959081157909">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="3370851436912818" type="System">
+                            <param id="0" name="Variable">bossTime</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">7</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="6080552679026245" type="System">
+                            <param id="0" name="Variable">bossTime</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="9411841200785886">
+            <conditions>
+                <condition id="-18" name="On created" sid="7430265152384655" type="bossEnemy" />
+            </conditions>
+            <actions>
+                <action behavior="Timer" id="0" name="Start timer" sid="9554897483074828" type="bossEnemy">
+                    <param id="0" name="Duration">0.3</param>
+                    <param id="1" name="Type">1</param>
+                    <param id="2" name="Tag">&quot;shoot&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4922442221099188">
+            <conditions>
+                <condition behavior="Timer" id="0" name="On timer" sid="6715773611724158" type="bossEnemy">
+                    <param id="0" name="Tag">&quot;shoot&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Here, boss shoots</comment>
+                <event-block sid="9120416520969465">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="8226977765144434" type="bossEnemy">
+                            <param id="0" name="Instance variable">startAI</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="7308315544856632">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8631672509832721" type="System">
+                                    <param id="0" name="Variable">bossTime</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="6590110302232707" type="bossEnemy">
+                                    <param id="0" name="Instance variable">shotAngle</param>
+                                    <param id="1" name="Value">180</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="142051737890189" type="bossEnemy">
+                                    <param id="0" name="Object">bulletEnemy</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="2171112664925399" type="bulletEnemy">
+                                    <param id="0" name="Angle">bossEnemy.shotAngle</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8149418512479179">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="7005090363194022" type="System">
+                                    <param id="0" name="Variable">bossTime</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="6533413856273247" type="bossEnemy">
+                                    <param id="0" name="Instance variable">shotAngle</param>
+                                    <param id="1" name="Value">150</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="8166591820241377" type="bossEnemy">
+                                    <param id="0" name="Object">bulletEnemy</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="9350281116381222" type="bulletEnemy">
+                                    <param id="0" name="Angle">bossEnemy.shotAngle</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="8145344225327485" type="bossEnemy">
+                                    <param id="0" name="Instance variable">shotAngle</param>
+                                    <param id="1" name="Value">210</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="1293831410501389" type="bossEnemy">
+                                    <param id="0" name="Object">bulletEnemy</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="9631322985388595" type="bulletEnemy">
+                                    <param id="0" name="Angle">bossEnemy.shotAngle</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="819344948744219">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="3332179168627514" type="System">
+                                    <param id="0" name="Variable">bossTime</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">6</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="7032162815826041">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="6536422429238623" type="System">
+                                            <param id="0" name="Name">&quot;bossShot 3&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">10</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="5561377927588131" type="bossEnemy">
+                                            <param id="0" name="Instance variable">shotAngle</param>
+                                            <param id="1" name="Value">36 * (loopindex - 1)</param>
+                                        </action>
+                                        <action id="0" name="Spawn another object" sid="3295088294407505" type="bossEnemy">
+                                            <param id="0" name="Object">bulletEnemy</param>
+                                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="285756117076542" type="bulletEnemy">
+                                            <param id="0" name="Angle">bossEnemy.shotAngle</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4837932623335443">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7612358815294178" type="bulletFullCharged">
+                    <param id="0" name="Object">bossEnemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="269164505123058" type="bossEnemy">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">bulletFullCharged.power</param>
+                </action>
+                <action id="-9" name="Destroy" sid="7118951801453312" type="bulletFullCharged" />
+            </actions>
+        </event-block>
+        <event-block sid="8123231347343379">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6897476019932279" type="bulletHalfCharged">
+                    <param id="0" name="Object">bossEnemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="2904239448138797" type="bossEnemy">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">bulletHalfCharged.power</param>
+                </action>
+                <action id="-9" name="Destroy" sid="5928328016294528" type="bulletHalfCharged" />
+            </actions>
+        </event-block>
+        <event-block sid="1420216368574888">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="5044044270022349" type="bulletNormal">
+                    <param id="0" name="Object">bossEnemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="2391587865105316" type="bossEnemy">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">bulletNormal.power</param>
+                </action>
+                <action id="-9" name="Destroy" sid="4482777703753198" type="bulletNormal" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

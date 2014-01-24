@@ -1,0 +1,1147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>level 1-1 sheet</name>
+    <events>
+        <variable comment="value of shotArr at index shotIndex" constant="0" name="selectedShot" sid="4856722462034851" static="0" type="text">normalShot</variable>
+        <variable comment="selected index of shotArr array" constant="0" name="shotIndex" sid="3230988980373101" static="0" type="number">0</variable>
+        <variable comment="how many seconds has the bullet power charged?" constant="0" name="chargedTime" sid="8093071992445046" static="0" type="number">0</variable>
+        <variable comment="which direction the hero is facing" constant="0" name="facing" sid="7316440238952624" static="0" type="text">right</variable>
+        <event-block sid="9894143753598534">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="6353533235190337" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Clear" sid="4580531704947786" type="shotArr" />
+                <action id="5" name="Push" sid="3303077092480137" type="shotArr">
+                    <param id="0" name="Where">0</param>
+                    <param id="1" name="Value">&quot;normalShot&quot;</param>
+                    <param id="2" name="Axis">0</param>
+                </action>
+                <action id="5" name="Push" sid="7639806367337694" type="shotArr">
+                    <param id="0" name="Where">0</param>
+                    <param id="1" name="Value">&quot;boss1&quot;</param>
+                    <param id="2" name="Axis">0</param>
+                </action>
+                <action id="5" name="Push" sid="3671719420019221" type="shotArr">
+                    <param id="0" name="Where">0</param>
+                    <param id="1" name="Value">&quot;boss2&quot;</param>
+                    <param id="2" name="Axis">0</param>
+                </action>
+                <action id="-3" name="Set position" sid="4858851134911887" type="xeon">
+                    <param id="0" name="X">startPos.X</param>
+                    <param id="1" name="Y">startPos.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6877476510947116">
+            <conditions>
+                <condition id="2" name="Key is down" sid="9191471728986281" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="9829007387178709" type="xeon">
+                    <param id="0" name="Animation">&quot;WalkRight&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="3320451927217615" type="System">
+                    <param id="0" name="Variable">facing</param>
+                    <param id="1" name="Value">&quot;right&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9911430602889633">
+            <conditions>
+                <condition id="2" name="Key is down" sid="3120488848704092" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="7871861655295116" type="xeon">
+                    <param id="0" name="Animation">&quot;WalkLeft&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="4981113187376247" type="System">
+                    <param id="0" name="Variable">facing</param>
+                    <param id="1" name="Value">&quot;left&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5901486674040369">
+            <conditions>
+                <condition id="3" name="On key released" sid="7137300638252892" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="8580481649202327" type="xeon">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5766653649651673">
+            <conditions>
+                <condition id="3" name="On key released" sid="6550609604913586" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="357960000145739" type="xeon">
+                    <param id="0" name="Animation">&quot;StandLeft&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5930204892071415">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="308209588257153" type="Keyboard">
+                    <param id="0" name="Key">90 (Z)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="2016090605519117">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1678786407526097" type="System">
+                            <param id="0" name="Variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;right&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="7505095632508135">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4858880164813855" type="System">
+                                    <param id="0" name="Variable">selectedShot</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;normalShot&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="619158424012018" type="xeon">
+                                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="8913797507635859" type="xeon">
+                                    <param id="0" name="Object">bulletNormal</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">&quot;bulletShot&quot;</param>
+                                </action>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="3881994896005299" type="bulletNormal">
+                                    <param id="0" name="Speed">bulletNormal.speed</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="8392568417159097" type="bulletNormal">
+                                    <param id="0" name="Angle">bulletNormal.moveAngle</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="2121352811734169">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1762347279904323" type="System">
+                            <param id="0" name="Variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;left&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="9295052318036135">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="9327385675885211" type="System">
+                                    <param id="0" name="Variable">selectedShot</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;normalShot&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="5924853963423075" type="xeon">
+                                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="328334760368101" type="xeon">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="7616867028718062" type="xeon">
+                                    <param id="0" name="Object">bulletNormal</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">&quot;bulletShot&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="4070406115393331" type="bulletNormal">
+                                    <param id="0" name="Instance variable">moveAngle</param>
+                                    <param id="1" name="Value">180</param>
+                                </action>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="6849130358169854" type="bulletNormal">
+                                    <param id="0" name="Speed">bulletNormal.speed</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="6707133729068548" type="bulletNormal">
+                                    <param id="0" name="Angle">bulletNormal.moveAngle</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="1128026712522438">
+            <conditions>
+                <condition id="2" name="Key is down" sid="1006945191043326" type="Keyboard">
+                    <param id="0" name="Key">90 (Z)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="5201325679406954">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="6134183338710107" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="7969345894408557">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="2532928389275573" type="System">
+                                    <param id="0" name="Variable">selectedShot</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;normalShot&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="5782125821294709" type="System">
+                                    <param id="0" name="Variable">chargedTime</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="240949010154722">
+            <conditions>
+                <condition id="3" name="On key released" sid="1892614040723263" type="Keyboard">
+                    <param id="0" name="Key">90 (Z)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Here, shot a half-charged bullet</comment>
+                <event-block sid="4581742415576079">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="6061234473925707" type="System">
+                            <param id="0" name="Variable">chargedTime</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="6619907335217133" type="System">
+                            <param id="0" name="Variable">chargedTime</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="8622031996717796" type="System">
+                            <param id="0" name="Variable">selectedShot</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;normalShot&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="1730983493501628">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="9477563789713455" type="System">
+                                    <param id="0" name="Variable">facing</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;right&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="7169998406929129" type="xeon">
+                                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="6159588314880016" type="xeon">
+                                    <param id="0" name="Object">bulletHalfCharged</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">&quot;bulletShot&quot;</param>
+                                </action>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="9292050874364337" type="bulletHalfCharged">
+                                    <param id="0" name="Speed">bulletHalfCharged.speed</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="6370151436367857" type="bulletHalfCharged">
+                                    <param id="0" name="Angle">bulletNormal.moveAngle</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7299142664653868" type="System">
+                                    <param id="0" name="Variable">chargedTime</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3936572747381429">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="7426070554870044" type="System">
+                                    <param id="0" name="Variable">facing</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;left&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="3024522987875175" type="xeon">
+                                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="4428683671018315" type="xeon">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="5925346646681968" type="xeon">
+                                    <param id="0" name="Object">bulletHalfCharged</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">&quot;bulletShot&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="414608313926769" type="bulletHalfCharged">
+                                    <param id="0" name="Instance variable">moveAngle</param>
+                                    <param id="1" name="Value">180</param>
+                                </action>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="4913016676690378" type="bulletHalfCharged">
+                                    <param id="0" name="Speed">bulletHalfCharged.speed</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="9319420877721266" type="bulletHalfCharged">
+                                    <param id="0" name="Angle">bulletHalfCharged.moveAngle</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="2949801086778769" type="System">
+                                    <param id="0" name="Variable">chargedTime</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Here, shot a full-charged bullet</comment>
+                <event-block sid="2447861276095907">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="6022462845784544" type="System">
+                            <param id="0" name="Variable">chargedTime</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="9679151243709387" type="System">
+                            <param id="0" name="Variable">selectedShot</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;normalShot&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="3328961835715023">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4213841094695233" type="System">
+                                    <param id="0" name="Variable">facing</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;right&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="192998285699933" type="xeon">
+                                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="8555714317077417" type="xeon">
+                                    <param id="0" name="Object">bulletFullCharged</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">&quot;bulletShot&quot;</param>
+                                </action>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="6398352054559054" type="bulletFullCharged">
+                                    <param id="0" name="Speed">bulletFullCharged.speed</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="9203300545245194" type="bulletFullCharged">
+                                    <param id="0" name="Angle">bulletFullCharged.moveAngle</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="5083812799012251" type="System">
+                                    <param id="0" name="Variable">chargedTime</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6809221641370893">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="7598479411030107" type="System">
+                                    <param id="0" name="Variable">facing</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;left&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="1621349714285879" type="xeon">
+                                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="9066636306735422" type="xeon">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="9562043054469786" type="xeon">
+                                    <param id="0" name="Object">bulletFullCharged</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">&quot;bulletShot&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="2801237403378929" type="bulletFullCharged">
+                                    <param id="0" name="Instance variable">moveAngle</param>
+                                    <param id="1" name="Value">180</param>
+                                </action>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="1953674724593192" type="bulletFullCharged">
+                                    <param id="0" name="Speed">bulletFullCharged.speed</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="6364867803920528" type="bulletFullCharged">
+                                    <param id="0" name="Angle">bulletFullCharged.moveAngle</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4940745559427123" type="System">
+                                    <param id="0" name="Variable">chargedTime</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="7468915088084325">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5133173731904983" type="System">
+                            <param id="0" name="Variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;right&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="5948960266823284" type="xeon">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="818591521061579">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="9151685490389102" type="System">
+                            <param id="0" name="Variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;left&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="7310978259421693" type="xeon">
+                            <param id="0" name="Animation">&quot;StandLeft&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="7458927494897422" type="xeon">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="7329211274882841">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="3370593288967994" type="System" />
+            </conditions>
+            <actions>
+                <action id="-5" name="Set width" sid="4720871374511297" type="healthBar">
+                    <param id="0" name="Width">(xeon.health / xeon.maxHealth) * 100</param>
+                </action>
+                <action id="0" name="Call function" sid="6559146974609129" type="Function">
+                    <param id="0" name="Name">&quot;checkSees&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+            <sub-events>
+                <comment>here, the enemy will shoot</comment>
+                <event-block sid="3530576566583662">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="9827298666980856" type="System">
+                            <param id="0" name="First value">Function.ReturnValue</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="5728373049845096">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="2752571392234239" type="enemy">
+                                    <param id="0" name="Instance variable">shotAI</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;simple&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="8959822145348652" type="enemy">
+                                    <param id="0" name="Animation">&quot;Shooting&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="8487653313981835" type="enemy">
+                                    <param id="0" name="Object">bulletEnemy</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="8737070698032465" type="bulletEnemy">
+                                    <param id="0" name="Angle">enemy.shotAngle</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="2319950788479381" type="bulletEnemy">
+                                    <param id="0" name="Instance variable">power</param>
+                                    <param id="1" name="Value">enemy.power</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Shots three bullets at once</comment>
+                        <event-block sid="6202300197333506">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="2005782804960296" type="enemy">
+                                    <param id="0" name="Instance variable">shotAI</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;threeBullets&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="1434510798182774" type="Function">
+                                    <param id="0" name="Name">&quot;shootThreeBullets&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="8403503026631351">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="4979697480000841" type="System">
+                            <param id="0" name="First value">Function.ReturnValue</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="3363299848856183" type="enemy">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="8118378282350291">
+            <conditions>
+                <condition id="0" name="On function" sid="5234587244372403" type="Function">
+                    <param id="0" name="Name">&quot;checkSees&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Set return value" sid="6126122065257971" type="Function">
+                    <param id="0" name="Value">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="9548970092099758">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6276876823179811" type="enemy">
+                            <param id="0" name="Instance variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;left&quot;</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="1465775718219258" type="xeon">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">enemy.X - enemy.range</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="3309511635147096" type="xeon">
+                            <param id="0" name="Comparison">2</param>
+                            <param id="1" name="X co-ordinate">enemy.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="8184856458931621" type="Function">
+                            <param id="0" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4980122263682756">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6457338343896649" type="enemy">
+                            <param id="0" name="Instance variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;right&quot;</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="5925532807393708" type="xeon">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">enemy.X + enemy.range</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="1495477021727227" type="xeon">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="X co-ordinate">enemy.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="3836538199284631" type="Function">
+                            <param id="0" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="7087398726498914">
+            <conditions>
+                <condition id="0" name="On function" sid="4286772513944772" type="Function">
+                    <param id="0" name="Name">&quot;switchingAI&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="9333202599497293">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2787547362355051" type="System">
+                            <param id="0" name="Variable">eTime</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6211242106130191">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="3255593322505866" type="enemy">
+                                    <param id="0" name="Instance variable">facing</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;left&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="7481883001240841" type="enemy">
+                                    <param id="0" name="Instance variable">facing</param>
+                                    <param id="1" name="Value">&quot;right&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="5381768715243732" type="enemy">
+                                    <param id="0" name="Instance variable">shotAngle</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2165902567343283">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="1368823390574329" type="enemy">
+                                    <param id="0" name="Instance variable">facing</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;right&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="2625852809892389" type="enemy">
+                                    <param id="0" name="Instance variable">facing</param>
+                                    <param id="1" name="Value">&quot;left&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="686320207655324" type="enemy">
+                                    <param id="0" name="Instance variable">shotAngle</param>
+                                    <param id="1" name="Value">180</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9397080669987155">
+                            <conditions>
+                                <condition id="7" name="Is mirrored" sid="7984953375433428" type="enemy" />
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="2147086987012359" type="enemy">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3443150866916924">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Is mirrored" sid="8770249357627734" type="enemy" />
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="8614926523432785" type="enemy">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3281973900672033">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="1501499867910629" type="System">
+                                    <param id="0" name="First value">0</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="9491532963055872" type="Function">
+                                    <param id="0" name="Name">&quot;resetTime&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <variable comment="the elapsed time" constant="0" name="eTime" sid="7624219593746232" static="0" type="number">0</variable>
+        <event-block sid="3432946526885867">
+            <conditions>
+                <condition id="0" name="On function" sid="2573795514485686" type="Function">
+                    <param id="0" name="Name">&quot;resetTime&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="1126409221782321" type="System">
+                    <param id="0" name="Variable">eTime</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="300964378030716">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="5276150805342164" type="System">
+                    <param id="0" name="Interval (seconds)">1.0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="5685311756836676" type="System">
+                    <param id="0" name="Variable">eTime</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7749748706426218">
+            <conditions>
+                <condition id="0" name="On function" sid="7762677718721735" type="Function">
+                    <param id="0" name="Name">&quot;elapsedTime&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Set return value" sid="9117946031787181" type="Function">
+                    <param id="0" name="Value">eTime</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4635741975239288">
+            <conditions>
+                <condition id="0" name="On function" sid="456148933406692" type="Function">
+                    <param id="0" name="Name">&quot;patrollingAI&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="4208359517375177">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="8756339266092644" type="enemy">
+                            <param id="0" name="Instance variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;right&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="426398107928915" type="enemy">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="7655153428421754" type="enemy">
+                            <param id="0" name="Animation">&quot;Walking&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="7178361012420222">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="9532930951888224" type="enemy">
+                                    <param id="0" name="Object">patrolBorderRight</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="7144273092284773" type="enemy">
+                                    <param id="0" name="Instance variable">facing</param>
+                                    <param id="1" name="Value">&quot;left&quot;</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="5380358005940274" type="enemy">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="2480270758332222">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="8442791951617138" type="enemy">
+                            <param id="0" name="Instance variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;left&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="495484797372497" type="enemy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="3338035844824187" type="enemy">
+                            <param id="0" name="Animation">&quot;Walking&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="8176691845836602">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="8505461941008289" type="enemy">
+                                    <param id="0" name="Object">patrolBorderLeft</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="5451137358980434" type="enemy">
+                                    <param id="0" name="Instance variable">facing</param>
+                                    <param id="1" name="Value">&quot;right&quot;</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="824671914465969" type="enemy">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Calls enemy AI depending on the variable&apos;s value</comment>
+        <event-block sid="4016899237171047">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="6729353675992538" type="enemy">
+                    <param id="0" name="Instance variable">enemyAI</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;switching&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="8900290191497572" type="Function">
+                    <param id="0" name="Name">&quot;switchingAI&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6078653270763304">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="2998886316489928" type="enemy">
+                    <param id="0" name="Instance variable">enemyAI</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;patrolling&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="4677501358056295" type="Function">
+                    <param id="0" name="Name">&quot;patrollingAI&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6284571275853127">
+            <conditions>
+                <condition id="0" name="On function" sid="741031039878808" type="Function">
+                    <param id="0" name="Name">&quot;shootThreeBullets&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="8917665897100993">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6733882471792299" type="enemy">
+                            <param id="0" name="Instance variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;right&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="6185688470064409" type="enemy">
+                            <param id="0" name="Object">bulletEnemy</param>
+                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="6262032234580895" type="bulletEnemy">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7772055641207536" type="bulletEnemy">
+                            <param id="0" name="Instance variable">power</param>
+                            <param id="1" name="Value">enemy.power</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="4340933566967607" type="enemy">
+                            <param id="0" name="Object">bulletEnemy</param>
+                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="9037165016933824" type="bulletEnemy">
+                            <param id="0" name="Angle">330</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2900669807813729" type="bulletEnemy">
+                            <param id="0" name="Instance variable">power</param>
+                            <param id="1" name="Value">enemy.power</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="5392446856684305" type="enemy">
+                            <param id="0" name="Object">bulletEnemy</param>
+                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="5471784772728315" type="bulletEnemy">
+                            <param id="0" name="Angle">30</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6077195059743611" type="bulletEnemy">
+                            <param id="0" name="Instance variable">power</param>
+                            <param id="1" name="Value">enemy.power</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3759591049824576">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="2067416341642555" type="enemy">
+                            <param id="0" name="Instance variable">facing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;left&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="3405862843499117" type="enemy">
+                            <param id="0" name="Animation">&quot;Shooting&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="5488235889270206" type="enemy">
+                            <param id="0" name="Object">bulletEnemy</param>
+                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="9847284771643519" type="bulletEnemy">
+                            <param id="0" name="Angle">180</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="5308879917622274" type="bulletEnemy">
+                            <param id="0" name="Instance variable">power</param>
+                            <param id="1" name="Value">enemy.power</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="3619173808299964" type="enemy">
+                            <param id="0" name="Object">bulletEnemy</param>
+                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="5885357415695844" type="bulletEnemy">
+                            <param id="0" name="Angle">210</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2503165565608616" type="bulletEnemy">
+                            <param id="0" name="Instance variable">power</param>
+                            <param id="1" name="Value">enemy.power</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="3053301715851447" type="enemy">
+                            <param id="0" name="Object">bulletEnemy</param>
+                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="9165507589038144" type="bulletEnemy">
+                            <param id="0" name="Angle">150</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="5826131711139888" type="bulletEnemy">
+                            <param id="0" name="Instance variable">power</param>
+                            <param id="1" name="Value">enemy.power</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Changes the hero&apos;s bullet / shot</comment>
+        <event-block sid="5134673339815364">
+            <conditions>
+                <condition id="0" name="On function" sid="4160718579929933" type="Function">
+                    <param id="0" name="Name">&quot;changeBullet&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="1014263858092164">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="8630102397789906" type="Keyboard">
+                            <param id="0" name="Key">69 (E)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="559392051330723" type="System">
+                            <param id="0" name="Variable">shotIndex</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1462686459814049">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="2872351776079564" type="Keyboard">
+                            <param id="0" name="Key">81 (Q)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="6540605027929669" type="System">
+                            <param id="0" name="Variable">shotIndex</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Fix shotIndex if it&apos;s out of bounds</comment>
+                <event-block sid="8178206832887944">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="7656250607822246" type="System">
+                            <param id="0" name="Variable">shotIndex</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">shotArr.Width</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="4888120156931835" type="System">
+                            <param id="0" name="Variable">shotIndex</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4691526542053892">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="681357397343139" type="System">
+                            <param id="0" name="Variable">shotIndex</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="9807158820690582" type="System">
+                            <param id="0" name="Variable">shotIndex</param>
+                            <param id="1" name="Value">shotArr.Width - 1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7115673799646312">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="1568996556993239" type="System">
+                            <param id="0" name="First value">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="2189157480306841" type="System">
+                            <param id="0" name="Variable">selectedShot</param>
+                            <param id="1" name="Value">shotArr.At(shotIndex)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Enemy also shots this bullet</comment>
+        <comment>Checks if the bullet collides with hero</comment>
+        <event-block sid="9409623411256424">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6263667435064219" type="bulletEnemy">
+                    <param id="0" name="Object">xeon</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="2508953132035295" type="xeon">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">bulletNormal.power</param>
+                </action>
+                <action id="-9" name="Destroy" sid="9644039867605301" type="bulletEnemy" />
+            </actions>
+        </event-block>
+        <event-block sid="692928441490431">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="4717518678099857" type="xeon">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="4435153587689645" type="xeon" />
+            </actions>
+        </event-block>
+        <event-block sid="6817041276054854">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="2637589012662498" type="bulletNormal">
+                    <param id="0" name="Object">enemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="6638869387436818" type="enemy">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">bulletNormal.power</param>
+                </action>
+                <action id="-9" name="Destroy" sid="6201511329792617" type="bulletNormal" />
+            </actions>
+        </event-block>
+        <event-block sid="2045173722360489">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7849026919225692" type="bulletFullCharged">
+                    <param id="0" name="Object">enemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="3211663392621734" type="enemy">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">bulletFullCharged.power</param>
+                </action>
+                <action id="-9" name="Destroy" sid="366791314054083" type="bulletFullCharged" />
+            </actions>
+        </event-block>
+        <event-block sid="2190424214494274">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7231200324670803" type="bulletHalfCharged">
+                    <param id="0" name="Object">enemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="9934135443043476" type="enemy">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">bulletHalfCharged.power</param>
+                </action>
+                <action id="-9" name="Destroy" sid="349045542699806" type="bulletHalfCharged" />
+            </actions>
+        </event-block>
+        <event-block sid="6276105951039733">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="1785363250411665" type="enemy">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="2188828230477264" type="enemy" />
+            </actions>
+        </event-block>
+        <event-block sid="1632490536723354">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="9123000311364005" type="xeon">
+                    <param id="0" name="Object">greenDoor</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="1546740184472574">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="2985602578173483" type="greenDoor">
+                            <param id="0" name="Instance variable">nextLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;level1-2&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="8467982160319455" type="System">
+                            <param id="0" name="Layout">level 1-2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2034495523070506">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6438094715778498" type="greenDoor">
+                            <param id="0" name="Instance variable">nextLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;boss1&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="1882830817455006" type="System">
+                            <param id="0" name="Layout">boss1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
